@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34, 211, 238, 0.65) rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    @apply bg-ink text-white font-body antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-[0.08em] uppercase;
+  }
+
+  *::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border: 3px solid rgba(8, 12, 18, 0.92);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(34, 211, 238, 0.9), rgba(59, 130, 246, 0.72));
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(103, 232, 249, 0.95), rgba(96, 165, 250, 0.82));
+  }
+
+  @media (pointer: fine) {
+    body.custom-cursor-active,
+    body.custom-cursor-active a,
+    body.custom-cursor-active button,
+    body.custom-cursor-active input,
+    body.custom-cursor-active textarea,
+    body.custom-cursor-active select,
+    body.custom-cursor-active label,
+    body.custom-cursor-active summary {
+      cursor: none;
+    }
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card-gradient backdrop-blur-xl border border-white/10 rounded-3xl shadow-soft;
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 30px rgba(14, 231, 255, 0.2), inset 0 0 20px rgba(124, 58, 237, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(120deg, #0ee7ff, #7c3aed, #f97316);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-soft-blur {
+    background: rgba(7, 9, 15, 0.1);
+    backdrop-filter: blur(2px);
+  }
+
+  .hero-lights {
+    background: radial-gradient(600px at 20% 20%, rgba(14, 231, 255, 0.18), transparent 60%),
+      radial-gradient(520px at 80% 30%, rgba(124, 58, 237, 0.16), transparent 60%);
+    mix-blend-mode: screen;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    width: 320px;
+    height: 320px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(14, 231, 255, 0.22) 0%, rgba(124, 58, 237, 0.18) 40%, transparent 70%);
+    mix-blend-mode: screen;
+    opacity: 0.65;
+    pointer-events: none;
+    filter: blur(2px);
+  }
+
+  .shine-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .shine-btn::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -60%;
+    width: 40%;
+    height: 180%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    transform: translateX(-140%) rotate(12deg);
+    animation: shine 3.2s ease-in-out infinite;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .typing-text {
+    display: inline-block;
+    min-height: 1.4em;
+  }
+
+  .typing-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    margin-left: 6px;
+    background: rgba(255, 255, 255, 0.7);
+    animation: blink 0.8s step-end infinite;
+    transform: translateY(3px);
+  }
+}
+
+@layer utilities {
+  .mask-fade {
+    mask-image: linear-gradient(180deg, black 70%, transparent 100%);
+  }
+
+  .noise-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    pointer-events: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-140%) rotate(12deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  45% {
+    transform: translateX(220%) rotate(12deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(220%) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .typing-text {
+    min-height: 1.6em;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor-glow {
+    display: none;
+  }
+}
