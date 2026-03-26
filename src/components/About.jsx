@@ -39,14 +39,31 @@ const focusAreas = [
   }
 ];
 
+const educationEntries = [
+  {
+    institution: "Lovely Professional University Punjab",
+    credential: "Computer Science and Engineering - CGPA: 7.00",
+    location: "Jalandhar, Punjab",
+    period: "2023 - Present"
+  },
+  {
+    institution: "Dav Public School",
+    credential: "12th with Science - Percentage: 70",
+    location: "Kusmunda, Chhattisgarh",
+    period: "2022 - 2023"
+  },
+  {
+    institution: "Dav Public School",
+    credential: "10th with Science - Percentage: 76",
+    location: "Kusmunda, Chhattisgarh",
+    period: "2020 - 2021"
+  }
+];
+
 const profileDetails = [
   {
     label: "Role",
     value: "Full Stack Web Developer"
-  },
-  {
-    label: "Education",
-    value: "B.Tech CSE | Lovely Professional University"
   },
   {
     label: "Focus",
@@ -77,7 +94,7 @@ const About = () => (
               </div>
             </div>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {profileDetails.map((detail) => (
                 <div key={detail.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                   <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-white/30">
@@ -157,6 +174,42 @@ const About = () => (
               </p>
             </div>
           ))}
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.28}>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <h4 className="whitespace-nowrap text-xs font-bold uppercase tracking-[0.3em] text-white/30">
+              Education
+            </h4>
+            <div className="h-[1px] w-full bg-white/10" />
+          </div>
+
+          <div className="glass-card p-5 sm:p-6 md:p-8">
+            <div className="divide-y divide-white/5">
+              {educationEntries.map((entry) => (
+                <div
+                  key={`${entry.institution}-${entry.period}`}
+                  className="grid gap-4 py-5 first:pt-0 last:pb-0 md:grid-cols-[minmax(0,1fr)_220px] md:items-start"
+                >
+                  <div>
+                    <h3 className="text-xl font-body font-semibold tracking-tight text-white sm:text-2xl">
+                      {entry.institution}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-white/65 sm:text-base">
+                      {entry.credential}
+                    </p>
+                  </div>
+
+                  <div className="text-left md:text-right">
+                    <p className="text-sm font-semibold text-white/80 sm:text-base">{entry.location}</p>
+                    <p className="mt-1 text-sm text-white/55 sm:text-base">{entry.period}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </Reveal>
 
