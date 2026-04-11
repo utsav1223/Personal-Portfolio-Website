@@ -11,12 +11,12 @@ export default {
         accent: "#7C3AED"
       },
       fontFamily: {
-        display: ["Bebas Neue", "sans-serif"],
-        body: ["Sora", "sans-serif"]
+        display: ["Outfit", "sans-serif"],
+        body: ["Manrope", "sans-serif"]
       },
       boxShadow: {
         glow: "0 0 30px rgba(14, 231, 255, 0.35)",
-        soft: "0 20px 60px rgba(5, 8, 20, 0.6)"
+        soft: "0 24px 80px rgba(2, 6, 23, 0.5)"
       },
       keyframes: {
         float: {
@@ -44,8 +44,8 @@ export default {
         pulseGlow: "pulseGlow 2.6s ease-in-out infinite"
       },
       backgroundImage: {
-        "hero-gradient": "radial-gradient(circle at top, rgba(14,231,255,0.03), transparent 55%), radial-gradient(circle at 20% 20%, rgba(124,58,237,0.05), transparent 40%), linear-gradient(180deg, rgba(5,8,20,0.2) 0%, rgba(7,9,15,0.45) 70%)",
-        "card-gradient": "linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))"
+        "hero-gradient": "radial-gradient(circle at top, rgba(34,211,238,0.08), transparent 52%), radial-gradient(circle at 78% 18%, rgba(245,158,11,0.08), transparent 34%), linear-gradient(180deg, rgba(5,8,20,0.12) 0%, rgba(7,9,15,0.5) 72%)",
+        "card-gradient": "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(148,163,184,0.04) 52%, rgba(8,15,31,0.24))"
       }
     }
   },

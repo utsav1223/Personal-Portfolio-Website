@@ -1,146 +1,121 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import FloatingOrbs from "./FloatingOrbs.jsx";
 import ScrollIndicator from "./ScrollIndicator.jsx";
 
-const heading = "Full Stack Developer Building Modern & Scalable Web Applications";
-const subtitle = "I design and develop fast, scalable web apps using modern technologies like React, Node.js and AI tools.";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.2 }
-  }
-};
-
-const wordVariants = {
-  hidden: { opacity: 0, y: 15 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-  }
-};
+const typingPhrases = [
+  "React Frontend Interfaces",
+  "Scalable Backend APIs",
+  "AI-Enabled Web Products"
+];
 
 const Hero = () => {
-  const [index, setIndex] = useState(0);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const typingSpeed = isDeleting ? 20 : 40;
+    const currentPhrase = typingPhrases[phraseIndex];
 
-    if (!isDeleting && index === subtitle.length) {
-      const timeout = setTimeout(() => setIsDeleting(true), 2500);
+    if (!isDeleting && displayText === currentPhrase) {
+      const timeout = setTimeout(() => setIsDeleting(true), 1300);
       return () => clearTimeout(timeout);
     }
 
-    if (isDeleting && index === 0) {
-      const timeout = setTimeout(() => setIsDeleting(false), 800);
+    if (isDeleting && displayText === "") {
+      const timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
+      }, 220);
       return () => clearTimeout(timeout);
     }
 
     const timeout = setTimeout(() => {
-      setIndex((prev) => prev + (isDeleting ? -1 : 1));
-    }, typingSpeed);
+      const nextText = isDeleting
+        ? currentPhrase.slice(0, displayText.length - 1)
+        : currentPhrase.slice(0, displayText.length + 1);
+
+      setDisplayText(nextText);
+    }, isDeleting ? 45 : 85);
 
     return () => clearTimeout(timeout);
-  }, [index, isDeleting]);
+  }, [displayText, isDeleting, phraseIndex]);
 
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] items-center overflow-hidden bg-[#050505] pb-14 pt-24 sm:pb-20 md:min-h-[100dvh] md:pt-24 lg:pb-0 lg:pt-0"
+      className="relative flex min-h-[100svh] items-center overflow-hidden bg-[#050505] pt-24 sm:pt-28 md:min-h-[100dvh] md:pt-32"
     >
       <div className="absolute inset-0 z-0">
         <video
-          className="h-full w-full object-cover opacity-60 brightness-[0.7] contrast-[1.05]"
+          className="h-full w-full object-cover opacity-55 brightness-[0.58]"
           src="/hero.mp4"
           autoPlay
           muted
           loop
           playsInline
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black" />
-        <div className="absolute inset-0 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.62),rgba(2,6,23,0.38),rgba(2,6,23,0.9))]" />
       </div>
 
-      <FloatingOrbs />
-
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
-        <div className="max-w-4xl">
+        <div className="max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8 flex flex-wrap items-center gap-3 sm:mb-10 sm:gap-4"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-white/70 backdrop-blur-sm"
           >
-            <div className="h-[1px] w-12 bg-white/20" />
-            <span className="text-[9px] font-bold uppercase tracking-[0.32em] text-white/50 sm:text-[10px] sm:tracking-[0.4em]">
-              Utsav Kumar Jha | Full Stack Developer
-            </span>
+            <span className="h-2 w-2 rounded-full bg-cyan-300" />
+            Full Stack Developer
           </motion.div>
 
           <motion.h1
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="text-[clamp(2.1rem,8vw,5rem)] font-light leading-[1.05] tracking-tight text-white"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.12, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 text-[clamp(2.8rem,8vw,5.4rem)] font-semibold leading-[0.95] tracking-tight text-white"
           >
-            {heading.split(" ").map((word, i) => (
-              <span key={i} className="mr-[0.3em] inline-block">
-                <motion.span variants={wordVariants} className="inline-block">
-                  {word}
-                </motion.span>
-              </span>
-            ))}
+            Utsav Kumar Jha
           </motion.h1>
 
-          <div className="mt-7 min-h-[4.8em] max-w-2xl text-sm font-light leading-relaxed text-white/60 sm:min-h-[4em] sm:text-base md:mt-10 md:text-lg lg:text-xl">
-            <span className="animate-pulse border-r-2 border-white/40 py-1 pr-1">
-              {subtitle.slice(0, index)}
-            </span>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.75 }}
+            className="mt-5 flex min-h-[1.8rem] items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-white/55 sm:text-sm"
+          >
+            <span>Focused on</span>
+            <span className="typing-text text-cyan-200">{displayText}</span>
+            <span className="typing-caret" style={{ backgroundColor: "#bae6fd" }} />
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.24, duration: 0.8 }}
+            className="mt-6 max-w-2xl text-base leading-8 text-white/68 md:text-lg"
+          >
+            I build clean, responsive, and reliable web applications using modern frontend and backend technologies.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="mt-9 flex flex-wrap gap-3 sm:mt-12 sm:gap-4 md:mt-16"
+            transition={{ delay: 0.36, duration: 0.8 }}
+            className="mt-8 flex flex-wrap gap-3 sm:gap-4"
           >
             <a
               href="#projects"
-              className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full bg-white px-7 py-4 text-[11px] font-bold uppercase tracking-widest text-black transition-all hover:scale-[1.03] active:scale-[0.98] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-4 text-[11px] font-bold uppercase tracking-[0.22em] text-black transition-all hover:scale-[1.02] active:scale-[0.98] sm:w-auto sm:px-9"
             >
-              <span className="relative z-10">View Work</span>
-              <motion.div
-                animate={{ x: ["-150%", "150%"] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                  ease: "linear"
-                }}
-                className="absolute inset-0 z-0 h-full w-full skew-x-[-25deg] bg-gradient-to-r from-transparent via-black/[0.08] to-transparent"
-              />
+              View Projects
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1eSRTD49jOgrQ0KiAfssnBQKwdIjzyysy/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 px-7 py-4 text-[11px] font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/10 sm:w-auto sm:px-10 sm:py-5"
+              href="#contact"
+              className="inline-flex w-full items-center justify-center rounded-full border border-white/10 bg-white/[0.05] px-7 py-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white backdrop-blur-sm transition-all hover:border-white/25 hover:bg-white/[0.09] sm:w-auto sm:px-9"
             >
-              <span className="relative z-10">Download CV</span>
-              <motion.div
-                animate={{ x: ["-150%", "150%"] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2.5,
-                  ease: "linear"
-                }}
-                className="absolute inset-0 z-0 h-full w-full skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/[0.15] to-transparent"
-              />
+              Contact Me
             </a>
           </motion.div>
         </div>

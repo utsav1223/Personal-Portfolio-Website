@@ -36,8 +36,8 @@ const Projects = () => {
     <Section
       id="projects"
       eyebrow="Portfolio"
-      title="Selected Work"
-      subtitle="A focused selection of full-stack products built around clear user flows, practical backend logic, and reliable delivery."
+      title="Selected Projects"
+      subtitle="A curated set of full-stack products focused on real user flows, dependable backend execution, and clear implementation decisions."
       className="relative z-10 isolate"
     >
       <div className="relative isolate">
@@ -54,7 +54,7 @@ const Projects = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => setActiveProject(project)}
                 style={{ top: `${stickyTop}px`, zIndex: index + 1 }}
-                className="group cursor-pointer rounded-[1.5rem] border border-white/10 bg-[#0A0A0A] p-4 shadow-[0_-20px_50px_-20px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-white/25 hover:bg-[#0C0F14] sm:rounded-[2rem] sm:p-5 md:p-8 lg:sticky lg:p-10"
+                className="group cursor-pointer rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.78),rgba(6,10,19,0.96))] p-4 shadow-[0_-20px_50px_-20px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-white/20 hover:shadow-[0_24px_90px_rgba(2,6,23,0.55)] sm:rounded-[2rem] sm:p-5 md:p-8 lg:sticky lg:p-10"
               >
                 <div className="grid gap-7 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-10">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white/5 sm:h-[320px] sm:aspect-auto md:h-[420px]">
@@ -64,11 +64,14 @@ const Projects = () => {
                       className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.24em] text-white/80 backdrop-blur-md">
+                      Case Study
+                    </div>
 
                     <div className="absolute inset-0 hidden items-center justify-center opacity-0 transition-all duration-500 group-hover:opacity-100 sm:flex">
                       <div className="rounded-full border border-white/20 bg-white/10 px-6 py-3 backdrop-blur-md">
                         <span className="text-xs font-bold uppercase tracking-[0.25em] text-white">
-                          View Details
+                          Open Project
                         </span>
                       </div>
                     </div>
@@ -83,25 +86,25 @@ const Projects = () => {
                         <div className="h-[1px] flex-1 bg-white/10" />
                       </div>
 
-                      <h3 className="font-body text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
+                      <h3 className="font-body text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[3.35rem]">
                         {project.title}
                       </h3>
 
-                      <p className="max-w-xl text-sm leading-relaxed text-white/55 sm:text-base">
+                      <p className="max-w-xl text-sm leading-7 text-white/60 sm:text-base">
                         {project.detail}
                       </p>
 
                       <div className="space-y-3 pt-1">
-                        {project.highlights.slice(0, 2).map((highlight) => (
-                          <div key={highlight} className="flex items-start gap-3 text-sm leading-relaxed text-white/55">
-                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                        {project.highlights.slice(0, 3).map((highlight) => (
+                          <div key={highlight} className="flex items-start gap-3 text-sm leading-relaxed text-white/58">
+                            <span className="mt-2 h-2 w-2 rounded-full bg-cyan-400" />
                             <span>{highlight}</span>
                           </div>
                         ))}
                       </div>
 
-                      <div className="flex flex-wrap gap-2 pt-1">
-                        {project.stack.slice(0, 4).map((tech) => (
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.stack.slice(0, 5).map((tech) => (
                           <span
                             key={tech}
                             className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[9px] font-medium uppercase tracking-[0.24em] text-white/65"
@@ -116,7 +119,7 @@ const Projects = () => {
                           type="button"
                           className="group/btn flex items-center gap-4 text-xs font-bold uppercase tracking-[0.25em] text-white"
                         >
-                          Explore Details
+                          Open Case Study
                           <span className="h-[1px] w-12 bg-white/20 transition-all group-hover/btn:w-20 group-hover/btn:bg-cyan-400" />
                         </button>
                       </div>
@@ -149,7 +152,7 @@ const Projects = () => {
             >
               <motion.div
                 layoutId={activeProject.title}
-                className="relative my-8 w-full max-w-[720px] overflow-hidden rounded-[1.3rem] border border-white/10 bg-[#0E1116] shadow-[0_30px_110px_rgba(0,0,0,0.56)] sm:my-10 sm:rounded-[1.6rem] md:max-w-[760px] md:rounded-[1.8rem]"
+                className="relative my-8 w-full max-w-[760px] overflow-hidden rounded-[1.3rem] border border-white/10 bg-[#0E1116] shadow-[0_30px_110px_rgba(0,0,0,0.56)] sm:my-10 sm:rounded-[1.6rem] md:max-w-[820px] md:rounded-[1.8rem]"
                 initial={{ scale: 0.97, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.97, opacity: 0, y: 20 }}
@@ -166,13 +169,24 @@ const Projects = () => {
                 </button>
 
                 <div className="p-5 sm:p-7 md:p-9">
+                  <div className="mb-8 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.03]">
+                    <img
+                      src={activeProject.image}
+                      alt={activeProject.title}
+                      className="aspect-[16/10] w-full object-cover"
+                    />
+                  </div>
+
                   <header className="mb-8 border-b border-white/10 pb-4 pr-14 sm:mb-10 sm:pr-16">
                     <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-400">
-                      Project Deep Dive
+                      Project Overview
                     </span>
                     <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
                       {activeProject.title}
                     </h2>
+                    <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55 sm:text-base">
+                      {activeProject.detail}
+                    </p>
                   </header>
 
                   <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-10">
@@ -220,7 +234,7 @@ const Projects = () => {
                           {activeProject.stack.map((tech) => (
                             <span
                               key={tech}
-                              className="rounded-md border border-white/5 bg-white/5 px-3 py-1 text-[10px] text-white/60"
+                              className="rounded-md border border-white/5 bg-white/5 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-white/60"
                             >
                               {tech}
                             </span>

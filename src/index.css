@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -27,7 +27,7 @@
   }
 
   h1, h2, h3, h4 {
-    @apply font-display tracking-[0.08em] uppercase;
+    @apply font-display tracking-tight;
   }
 
   *::-webkit-scrollbar {
@@ -68,12 +68,20 @@
     @apply bg-card-gradient backdrop-blur-xl border border-white/10 rounded-3xl shadow-soft;
   }
 
+  .panel-surface {
+    @apply rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.72),rgba(6,10,19,0.96))] shadow-soft backdrop-blur-xl;
+  }
+
+  .panel-muted {
+    @apply rounded-[1.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+  }
+
   .glow-ring {
-    box-shadow: 0 0 30px rgba(14, 231, 255, 0.2), inset 0 0 20px rgba(124, 58, 237, 0.1);
+    box-shadow: 0 0 34px rgba(34, 211, 238, 0.18), inset 0 0 18px rgba(245, 158, 11, 0.08);
   }
 
   .text-gradient {
-    background: linear-gradient(120deg, #0ee7ff, #7c3aed, #f97316);
+    background: linear-gradient(120deg, #f8fafc, #67e8f9, #f59e0b);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -85,8 +93,8 @@
   }
 
   .hero-lights {
-    background: radial-gradient(600px at 20% 20%, rgba(14, 231, 255, 0.18), transparent 60%),
-      radial-gradient(520px at 80% 30%, rgba(124, 58, 237, 0.16), transparent 60%);
+    background: radial-gradient(620px at 18% 20%, rgba(34, 211, 238, 0.16), transparent 60%),
+      radial-gradient(520px at 82% 24%, rgba(245, 158, 11, 0.14), transparent 58%);
     mix-blend-mode: screen;
     opacity: 0.7;
     pointer-events: none;
@@ -100,7 +108,7 @@
     width: 320px;
     height: 320px;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(14, 231, 255, 0.22) 0%, rgba(124, 58, 237, 0.18) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.2) 0%, rgba(59, 130, 246, 0.14) 38%, transparent 70%);
     mix-blend-mode: screen;
     opacity: 0.65;
     pointer-events: none;

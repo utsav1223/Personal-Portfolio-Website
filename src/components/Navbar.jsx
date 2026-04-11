@@ -41,14 +41,23 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
         <div
           className={`flex items-center justify-between rounded-full px-4 py-3 transition-all duration-500 sm:px-6 ${
-            scrolled ? "border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/20 backdrop-blur-xl" : "border-transparent bg-transparent"
+            scrolled
+              ? "border border-white/10 bg-slate-950/75 shadow-2xl shadow-black/20 backdrop-blur-xl"
+              : "border border-white/5 bg-black/20 backdrop-blur-md"
           }`}
         >
-          <a href="#top" className="group flex items-center gap-2">
-            <span className="text-sm font-light tracking-[0.18em] text-white sm:text-xl sm:tracking-[0.4em]">
-              UTSAV
-            </span>
-            <div className="h-1 w-1 rounded-full bg-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" />
+          <a href="#top" className="group flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-xs font-bold uppercase tracking-[0.2em] text-white">
+              UJ
+            </div>
+            <div className="flex flex-col">
+              <span className="hidden text-sm font-semibold tracking-tight text-white sm:block">
+                Utsav Kumar Jha
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/40">
+                Full Stack Portfolio
+              </span>
+            </div>
           </a>
 
           <nav className="hidden items-center gap-1 lg:flex xl:gap-2">
@@ -58,7 +67,7 @@ const Navbar = () => {
                 href={link.href}
                 onMouseEnter={() => setHovered(link.label)}
                 onMouseLeave={() => setHovered(null)}
-                className="relative px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white xl:px-5"
+                className="relative px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50 transition-colors hover:text-white xl:px-5"
               >
                 {hovered === link.label && (
                   <motion.div
