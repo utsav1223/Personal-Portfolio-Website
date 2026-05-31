@@ -12,39 +12,38 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: 22 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
   }
 };
 
 const Section = ({ id, eyebrow, title, subtitle, children, className = "" }) => (
   <section
     id={id}
-    className={`relative scroll-mt-24 py-16 sm:py-20 md:scroll-mt-32 md:py-28 lg:py-36 ${className}`}
+    className={`relative scroll-mt-24 py-16 sm:py-20 md:scroll-mt-28 lg:py-24 ${className}`}
   >
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 sm:px-6 md:gap-14 md:px-12">
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 md:gap-12">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="relative flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+        className="relative flex flex-col gap-5 border-b border-slate-200 pb-8 md:flex-row md:items-end md:justify-between"
       >
-        <div className="flex max-w-3xl flex-col gap-4">
+        <div className="flex max-w-3xl flex-col gap-3">
           <motion.div variants={itemVariants} className="flex items-center gap-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.7)]" />
-            <span className="text-[9px] font-bold uppercase tracking-[0.35em] text-cyan-100/75 sm:text-[10px] sm:tracking-[0.5em]">
+            <span className="h-1.5 w-8 rounded-full bg-teal-600" />
+            <span className="section-kicker">
               {eyebrow}
             </span>
           </motion.div>
 
           <motion.h2
             variants={itemVariants}
-            className="max-w-4xl text-[clamp(2.2rem,8vw,4.8rem)] font-body font-semibold normal-case tracking-tight text-white"
+            className="max-w-4xl text-3xl font-semibold leading-tight tracking-normal text-slate-950 sm:text-4xl lg:text-5xl"
           >
             {title}
           </motion.h2>
@@ -52,7 +51,7 @@ const Section = ({ id, eyebrow, title, subtitle, children, className = "" }) => 
           {subtitle && (
             <motion.p
               variants={itemVariants}
-              className="mt-1 max-w-2xl text-sm font-medium leading-relaxed text-white/55 sm:text-base md:text-lg"
+              className="max-w-2xl text-sm font-medium leading-7 text-slate-600 sm:text-base"
             >
               {subtitle}
             </motion.p>
@@ -61,10 +60,10 @@ const Section = ({ id, eyebrow, title, subtitle, children, className = "" }) => 
 
         <motion.div
           variants={itemVariants}
-          className="hidden items-center gap-4 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 text-[10px] font-bold uppercase tracking-[0.35em] text-white/35 backdrop-blur-xl lg:flex"
+          className="hidden items-center gap-3 rounded-md border border-slate-200 bg-white px-4 py-3 text-xs font-bold uppercase text-slate-500 shadow-sm lg:flex"
         >
-          <div className="h-[1px] w-10 bg-gradient-to-r from-cyan-400/60 to-transparent" />
-          Section Focus
+          <div className="h-1.5 w-1.5 rounded-full bg-teal-600" />
+          Portfolio Section
         </motion.div>
       </motion.div>
 
